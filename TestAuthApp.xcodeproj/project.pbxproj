@@ -15,6 +15,8 @@
 		60085A8A25EC51350038F6E2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60085A8925EC51350038F6E2 /* Network.swift */; };
 		60085A9425EC51BA0038F6E2 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60085A9325EC51BA0038F6E2 /* AuthResponse.swift */; };
 		60085A9825EC617A0038F6E2 /* UIView + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60085A9725EC617A0038F6E2 /* UIView + Ext.swift */; };
+		600A12E425ED9929000C0D22 /* UIColor + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600A12E325ED9929000C0D22 /* UIColor + Ext.swift */; };
+		603C233825ED3BE100D2D1B0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603C233725ED3BE100D2D1B0 /* Colors.swift */; };
 		609009E825E8DE4B00C5BCBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609009E725E8DE4B00C5BCBF /* AppDelegate.swift */; };
 		609009F125E8DE4D00C5BCBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 609009F025E8DE4D00C5BCBF /* Assets.xcassets */; };
 		609009F425E8DE4D00C5BCBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 609009F225E8DE4D00C5BCBF /* LaunchScreen.storyboard */; };
@@ -56,6 +58,8 @@
 		60085A8925EC51350038F6E2 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		60085A9325EC51BA0038F6E2 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		60085A9725EC617A0038F6E2 /* UIView + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Ext.swift"; sourceTree = "<group>"; };
+		600A12E325ED9929000C0D22 /* UIColor + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Ext.swift"; sourceTree = "<group>"; };
+		603C233725ED3BE100D2D1B0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		609009E425E8DE4B00C5BCBF /* TestAuthApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestAuthApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		609009E725E8DE4B00C5BCBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		609009F025E8DE4D00C5BCBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 			children = (
 				60085A7925EC4A120038F6E2 /* Notification + Ext.swift */,
 				60085A9725EC617A0038F6E2 /* UIView + Ext.swift */,
+				600A12E325ED9929000C0D22 /* UIColor + Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -135,6 +140,14 @@
 				60085A9325EC51BA0038F6E2 /* AuthResponse.swift */,
 			);
 			path = ResponseModels;
+			sourceTree = "<group>";
+		};
+		603C233625ED3BDA00D2D1B0 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				603C233725ED3BE100D2D1B0 /* Colors.swift */,
+			);
+			path = Colors;
 			sourceTree = "<group>";
 		};
 		609009DB25E8DE4B00C5BCBF = {
@@ -204,6 +217,7 @@
 		60900A1825E8E3C500C5BCBF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				603C233625ED3BDA00D2D1B0 /* Colors */,
 				60085A8425EC50730038F6E2 /* Network */,
 				60085A7825EC4A040038F6E2 /* Extensions */,
 				60085A7325EC49970038F6E2 /* Keyboard */,
@@ -387,7 +401,9 @@
 				60900A1325E8E19100C5BCBF /* SettingsVC.swift in Sources */,
 				6097D79325EC40D1002B8E7D /* LaunchState.swift in Sources */,
 				60900A1025E8E18900C5BCBF /* HomeVC.swift in Sources */,
+				603C233825ED3BE100D2D1B0 /* Colors.swift in Sources */,
 				60900A0A25E8E17700C5BCBF /* MainTabBarController.swift in Sources */,
+				600A12E425ED9929000C0D22 /* UIColor + Ext.swift in Sources */,
 				60900A1F25E8EF7700C5BCBF /* SessionInfo.swift in Sources */,
 				6097D63B25EBC900002B8E7D /* AppTextField.swift in Sources */,
 				6097D79D25EC4290002B8E7D /* Router.swift in Sources */,

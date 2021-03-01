@@ -12,6 +12,7 @@ protocol AuthViewInput: class {
     func signInSucceed()
     func startHUD()
     func stopHUD()
+    func wrongPassword()
 }
 
 protocol AuthViewOutput: class {

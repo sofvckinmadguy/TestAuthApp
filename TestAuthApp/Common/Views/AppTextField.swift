@@ -14,7 +14,7 @@ final class AppTextField: UITextField {
     init(placeHolder: String) {
         self.insets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         super.init(frame: .zero)
-        placeholder = placeHolder
+        attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         setupUI()
     }
     
@@ -24,7 +24,7 @@ final class AppTextField: UITextField {
     
     fileprivate func setupUI() {
         self.textColor = .black
-        self.backgroundColor = .systemGray5
+        self.backgroundColor = UIColor(hex: "90939D", alpha: 0.2)
         layer.cornerRadius = 10
     }
     
@@ -34,5 +34,9 @@ final class AppTextField: UITextField {
     
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: insets)
+    }
+    
+    func highlight(with text: String) {
+        attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.red.withAlphaComponent(0.5)])
     }
 }

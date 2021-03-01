@@ -15,7 +15,6 @@ final class BigButton: UIButton {
         super.init(frame: .zero)        
         self.cornerRadius = cornerRadius
         self.setTitleColor(titleColor, for: .normal)
-        self.setTitleColor(.red, for: .highlighted)
         self.backgroundColor = backgroundColor
         self.setAttributedTitle(NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .semibold)]), for: .normal)
     }

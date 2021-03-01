@@ -40,11 +40,5 @@ final class Router: NSObject, Routable {
         rootController?.isNavigationBarHidden = hideBar
     }
     
-    fileprivate func runCompletion(for controller: UIViewController) {
-        guard let completion = completions[controller] else { return }
-        completion()
-        completions.removeValue(forKey: controller)
-    }
-    
 }
 

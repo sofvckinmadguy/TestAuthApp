@@ -12,7 +12,7 @@ final class SimpleButton: UIButton {
     init(text: String, titleColor: UIColor) {
         super.init(frame: .zero)
         self.setTitleColor(titleColor, for: .normal)
-        self.setTitle(text, for: .normal)
+        self.setAttributedTitle(NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .semibold)]), for: .normal)
         setupUI()
     }
     

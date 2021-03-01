@@ -8,6 +8,10 @@
 import Foundation
 
 
+enum NetworkError: String, Error {
+    case authenticationError = "wrong password"
+    case unrecognized = "unrecognized error"
+}
 
 final class NetworkManager {
     
@@ -28,7 +32,7 @@ final class NetworkManager {
 extension NetworkManager: Networkable {
     
     
-    func signIn(email: String, password: String, completion: @escaping (Result<AuthResponse, Error>) -> Void) {
+    func signIn(email: String, password: String, completion: @escaping (Result<AuthResponse, NetworkError>) -> Void) {
         let appendingPath = "/sessions"
         let fullPath = baseUrlPath + appendingPath
         guard let url = URL(string: fullPath) else {
@@ -39,30 +43,32 @@ extension NetworkManager: Networkable {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         guard let httpBody = try? JSONSerialization.data(withJSONObject: configureParams(email: email, password: password), options: .prettyPrinted) else {
-                print("can't configure params")
-                return
-            }
+            completion(.failure(.unrecognized))
+            print("can't configure params")
+            return
+        }
         request.httpBody = httpBody
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let session = URLSession.shared
         
         session.dataTask(with: request) { (data, response, error) in
-            if let response = response {
-                DispatchQueue.main.async {
-                    print(response)
-                }
-            }
-            if let data = data {
-                do {
-                    let decodedData = try JSONDecoder().decode(AuthResponse.self, from: data)
-                    DispatchQueue.main.async {
-                        completion(.success(decodedData))
+            DispatchQueue.main.async {
+                if let response = response as? HTTPURLResponse {
+                    if response.statusCode == 401 {
+                        print(response)
+                        completion(.failure(.authenticationError))
+                        return
                     }
-                } catch let error {
-                    DispatchQueue.main.async {
-                        completion(.failure(error))
+                    if let data = data {
+                        do {
+                            let decodedData = try JSONDecoder().decode(AuthResponse.self, from: data)
+                            completion(.success(decodedData))
+                        } catch let error {
+                            print("error in decoding: \(error.localizedDescription)")
+                            completion(.failure(.unrecognized))
+                        }
                     }
                 }
             }

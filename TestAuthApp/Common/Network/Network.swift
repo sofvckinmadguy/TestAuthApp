@@ -9,5 +9,5 @@ import Foundation
 
 
 protocol Networkable {
-    func signIn(email: String, password: String, completion: @escaping (Result<AuthResponse, Error>) -> Void)
+    func signIn(email: String, password: String, completion: @escaping (Result<AuthResponse, NetworkError>) -> Void)
 }

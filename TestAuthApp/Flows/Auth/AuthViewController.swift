@@ -103,6 +103,9 @@ final class AuthViewController: UIViewController, AuthModuleOutput {
         view.addSubview(signUpButton)
         view.addSubview(forgorPasswordButton)
         
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
                     target: self,
                     action: #selector(endEditing))
@@ -112,6 +115,7 @@ final class AuthViewController: UIViewController, AuthModuleOutput {
     }
     
     @objc fileprivate func signInTapped() {
+        endEditing()
         presenter.signIn(email: emailTextField.text, password: passwordTextField.text)
     }
     
@@ -151,15 +155,30 @@ extension AuthViewController: KeyboardObservable {
     }
 }
 
+// MARK: -textField:
+
+extension AuthViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
 // MARK: -AuthViewInput:
 extension AuthViewController: AuthViewInput {
+    
+    func wrongPassword() {
+        passwordTextField.text = nil
+        passwordTextField.highlight(with: "Wrong password! Try again.")
+    }
     
     func startHUD() {
         view.activityStartAnimating(activityColor: .gray, backgroundColor: .lightGray)
     }
     
     func stopHUD() {
-        view.activityStopAnimating(withDelay: 0.3)
+        view.activityStopAnimating(withDelay: 0.2)
     }
     
     

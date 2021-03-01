@@ -27,7 +27,19 @@ final class SettingsViewController: UIViewController {
     
     fileprivate func setupUI() {
         view.backgroundColor = .white
-        self.navigationItem.title = "Settings"
+        
+        let label = UILabel()
+        label.text = "Settings"
+        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(label)
+        
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
         view.addSubview(signOutButton)
         signOutButton.addTarget(self, action: #selector(signOutTapped), for: .touchUpInside)
     }

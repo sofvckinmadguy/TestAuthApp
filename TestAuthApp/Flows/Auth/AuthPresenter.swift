@@ -23,7 +23,7 @@ extension AuthPresenter: AuthViewOutput {
             return
         }
         view.startHUD()
-        let onResult: (Result<AuthResponse, Error>) -> Void = { [weak self] result in
+        let onResult: (Result<AuthResponse, NetworkError>) -> Void = { [weak self] result in
             switch result {
             case .success(let response):
                 self?.view.stopHUD()
@@ -31,7 +31,12 @@ extension AuthPresenter: AuthViewOutput {
                 self?.view.signInSucceed()
             case .failure(let error):
                 self?.view.stopHUD()
-                self?.view.showAlert(title: "Error", message: error.localizedDescription, buttonTitle: "Ok", handler: nil)
+                switch error {
+                case .authenticationError:
+                    self?.view.wrongPassword()
+                default:
+                    self?.view.showAlert(title: "Error", message: error.rawValue, buttonTitle: "Ok", handler: nil)
+                }
             }
         }
         networkManager.signIn(email: email, password: password, completion: onResult)
