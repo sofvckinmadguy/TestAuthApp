@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FirstVC.swift
 //  TestAuthApp
 //
 //  Created by Захар  Сегал on 26.02.2021.
@@ -7,13 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
 
+class ProjectsViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .white
+        self.navigationItem.title = "Projects"
     }
-
-
 }
-

@@ -1,0 +1,27 @@
+//
+//  SimpleButton.swift
+//  TestAuthApp
+//
+//  Created by Захар  Сегал on 28.02.2021.
+//
+
+import UIKit
+
+final class SimpleButton: UIButton {
+    
+    init(text: String, titleColor: UIColor) {
+        super.init(frame: .zero)
+        self.setTitleColor(titleColor, for: .normal)
+        self.setTitle(text, for: .normal)
+        setupUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    fileprivate func setupUI() {
+        
+    }
+    
+}
